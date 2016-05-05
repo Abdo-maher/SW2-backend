@@ -16,6 +16,7 @@ public class UserModel {
 	private Integer id;
 	private Double lat;
 	private Double lon;
+	private int CHECKINid;
 	
 	public String getPass(){
 		return pass;
@@ -63,6 +64,14 @@ public class UserModel {
 
 	public void setLon(Double lon) {
 		this.lon = lon;
+	}
+	
+	public int getCheackIn() {
+		return CHECKINid;
+	}
+
+	public void setCheackIn(int CheackInID) {
+		this.CHECKINid = CheackInID;
 	}
 
 	public static UserModel addNewUser(String name, String email, String pass) {
@@ -165,4 +174,34 @@ public class UserModel {
 		}
 		return null;
 	}
+	
+	
+	public static  UserModel LIKE(int id, int CHECKINid) {
+		try {
+			Connection conn = DBConnection.getActiveConnection();
+			String sql = "Insert into like (`userId`,`checkInId`) VALUES  (?,?)";
+			// System.out.println(sql);
+
+			PreparedStatement stmt;
+			stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			stmt.setInt(1, id);
+			stmt.setInt(2, CHECKINid);
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			String sql2="UPDATE `checkin` SET CHECKIN.NOMOFLIKE = CHECKIN.No_of_likes +1 WHERE `CHECKINid` =?";
+			if (rs.next()) {
+				UserModel LIKE = new UserModel();
+				LIKE.id = rs.getInt(1);
+				LIKE.CHECKINid = rs.getInt(2);
+				return LIKE;
+			}
+			return null;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+}
+	
+	
 }

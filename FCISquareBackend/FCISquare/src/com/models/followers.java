@@ -28,7 +28,7 @@ public class followers {
 		this.id2 = id;
 	}
 	
-	public static followers addNewrec(int id1, int id2) {
+	public static followers addNewFollowers(int id1, int id2) {
 		try {
 			Connection conn = DBConnection.getActiveConnection();
 			String sql = "Insert into followers (`id1`,`id2`) VALUES  (?,?)";
@@ -54,7 +54,7 @@ public class followers {
 		return null;
 	}
 	
-	public static followers removeRec(int id1, int id2) {
+	public static followers removeFollowers(int id1, int id2) {
 		try {
 			Connection conn = DBConnection.getActiveConnection();
 		//	String sql = "delete from followers (`id1`,`id2`) where  (?,?)";

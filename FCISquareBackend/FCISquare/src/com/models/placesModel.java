@@ -65,7 +65,8 @@ public class placesModel {
 	}
 	
 	
-	public static  placesModel CreateNewplace(String name, String description, Double lat,Double lon ) {
+	public static  placesModel CreateNewplace(String name, String description, Double lat,Double lon ) //user can add any place he want from here
+	{
 		try {
 			Connection conn = DBConnection.getActiveConnection();
 			String sql = "Insert into `places` (`name`,`description`,`lat`,`long`) VALUES  (?,?,?,?)";

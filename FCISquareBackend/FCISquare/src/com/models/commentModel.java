@@ -49,7 +49,8 @@ public void setCommentBody(String commentBody) {
 }
 
 
-public static commentModel addComment(int userIDComment,int checkinID,String CommentBody) {
+public static commentModel addComment(int userIDComment,int checkinID,String CommentBody)//this fun to make user add his comment
+{
 	try {
 		Connection conn = DBConnection.getActiveConnection();
 		String sql = "Insert into comment(`UserCommentID`,`checkinID`,`CommentText`) VALUES  (?,?,?)";

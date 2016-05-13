@@ -86,7 +86,7 @@ public class Services {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String following(@FormParam("id1") int id1,
 			@FormParam("id2") int id2) {
-			followers follwer = followers.addNewrec(id1, id2);
+			followers follwer = followers.addNewFollowers(id1, id2);
 			JSONObject  json = new JSONObject();
 			//JSONObject json = new JSONObject();
 			json.put(id1, "This is follower ID");
@@ -100,7 +100,7 @@ public class Services {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String unfollowing(@FormParam("id1") int id1,
 			@FormParam("id2") int id2) {
-			followers follwer = followers.removeRec(id1, id2);
+			followers follwer = followers.removeFollowers(id1, id2);
 			JSONObject  json = new JSONObject();
 			//JSONObject json = new JSONObject();
 			json.put(id1,"Not follwing Him");

@@ -40,7 +40,8 @@ public void setUserID(int userID) {
 
 
 
-public static likeModel addlike(int userIDlike,int checkinID) {
+public static likeModel addlike(int userIDlike,int checkinID) // this function allow to user to like a check in 
+{
 	try {
 		Connection conn = DBConnection.getActiveConnection();
 		String sql = "INSERT INTO `likes` (`UserLikeID`,`CheckinID` )VALUES (?, ?)";
